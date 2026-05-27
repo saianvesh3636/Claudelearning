@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCA-F Study Guide — 30-Day Prep Plan</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --panel: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --muted: #7a7a7a;
+    --accent: #c96442;
+    --accent-soft: #f4ddd0;
+    --line: #e8e3dc;
+    --good: #2d7a4f;
+    --warn: #b87a00;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
+  header.hero {
+    background: linear-gradient(135deg, var(--accent) 0%, #a44d30 100%);
+    color: white;
+    padding: 40px 32px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  header.hero p { margin: 0; opacity: 0.92; font-size: 15px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 20px; }
+  .stat { background: rgba(255,255,255,0.15); padding: 12px 14px; border-radius: 10px; }
+  .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85; }
+  .stat .val { font-size: 18px; font-weight: 600; margin-top: 2px; }
+  .progress-wrap {
+    background: var(--panel); padding: 18px 22px; border-radius: 12px; margin-bottom: 24px;
+    box-shadow: var(--shadow); border: 1px solid var(--line);
+  }
+  .progress-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .progress-row strong { font-size: 14px; }
+  .progress-row .pct { font-size: 14px; color: var(--accent); font-weight: 600; }
+  .bar { height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; }
+  .bar > div { height: 100%; background: linear-gradient(90deg, var(--accent), #e08260); transition: width 0.4s ease; }
+  .reset-btn {
+    background: transparent; border: 1px solid var(--line); padding: 4px 10px;
+    font-size: 12px; border-radius: 6px; cursor: pointer; color: var(--muted); margin-left: 12px;
+  }
+  .reset-btn:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft); }
+  nav.tabs {
+    display: flex; gap: 4px; margin-bottom: 20px; flex-wrap: wrap;
+    background: var(--panel); padding: 6px; border-radius: 10px; border: 1px solid var(--line);
+  }
+  nav.tabs button {
+    background: transparent; border: 0; padding: 9px 13px; border-radius: 7px;
+    cursor: pointer; font-size: 13px; font-weight: 500; color: var(--ink-soft);
+    transition: all 0.15s; white-space: nowrap;
+  }
+  nav.tabs button:hover { background: var(--accent-soft); }
+  nav.tabs button.active { background: var(--accent); color: white; }
+  nav.tabs button .w { font-size: 11px; opacity: 0.75; margin-left: 4px; }
+
+  .panel {
+    background: var(--panel); border-radius: 12px; padding: 28px;
+    box-shadow: var(--shadow); border: 1px solid var(--line); margin-bottom: 16px;
+  }
+  .panel h2 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.3px; }
+  .panel h3 { margin: 28px 0 12px; font-size: 17px; display: flex; align-items: center; gap: 8px; }
+  .panel h3 .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; background: var(--accent); color: white;
+    border-radius: 50%; font-size: 13px; font-weight: 600;
+  }
+  .panel h4 { margin: 16px 0 6px; font-size: 14px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.5px; }
+  .panel p { color: var(--ink-soft); margin: 6px 0; }
+  .panel .lede { font-size: 15px; color: var(--muted); margin-bottom: 18px; }
+
+  .domain-hdr {
+    background: linear-gradient(135deg, #fdfbf7 0%, var(--accent-soft) 100%);
+    padding: 18px 22px; border-radius: 10px; border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    margin-bottom: 18px;
+  }
+  .domain-hdr .weight-pill {
+    background: var(--accent); color: white; padding: 6px 14px;
+    border-radius: 999px; font-size: 14px; font-weight: 600; white-space: nowrap;
+  }
+  .domain-hdr .summary { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+
+  /* Topic checklist */
+  .topic {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; margin: 6px 0; border-radius: 7px; border: 1px solid var(--line);
+    background: #fdfbf7; transition: all 0.15s;
+  }
+  .topic:hover { background: #fbf6ee; }
+  .topic.done { opacity: 0.6; background: #f0f0eb; }
+  .topic input[type="checkbox"] {
+    margin-top: 3px; width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent);
+  }
+  .topic .content { flex: 1; font-size: 14px; color: var(--ink-soft); }
+  .topic .content strong { color: var(--ink); font-weight: 600; }
+
+  /* Resource items inside domain */
+  .res {
+    display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px;
+    margin: 6px 0; text-decoration: none; color: var(--ink); background: #fdfbf7;
+    transition: all 0.15s;
+  }
+  .res:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .res .res-title { font-weight: 600; font-size: 14px; }
+  .res .res-desc { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .res-tag {
+    display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px;
+    margin-right: 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;
+    color: white; font-weight: 600;
+  }
+  .res-tag.official { background: var(--accent); }
+  .res-tag.free { background: var(--good); }
+  .res-tag.paid { background: var(--warn); }
+  .res-tag.video { background: #5a4e8a; }
+
+  /* Lab card */
+  .lab-card {
+    border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px;
+    margin: 8px 0; background: #fdfbf7;
+  }
+  .lab-card h5 { margin: 0 0 4px; font-size: 14px; color: var(--ink); }
+  .lab-card .lab-meta { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .lab-card ol { padding-left: 20px; color: var(--ink-soft); font-size: 13px; margin: 0; }
+  .lab-card li { margin: 3px 0; }
+
+  /* Self-check */
+  .check-q {
+    background: #fff8ee; border-left: 3px solid var(--warn);
+    padding: 10px 14px; border-radius: 6px; margin: 8px 0; font-size: 13.5px; color: var(--ink-soft);
+  }
+  .check-q strong { color: var(--warn); display: block; margin-bottom: 2px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Schedule */
+  .week { border-left: 3px solid var(--accent); padding: 4px 0 4px 18px; margin: 24px 0; }
+  .week h3 { margin-top: 0; }
+  .week .week-meta { font-size: 12px; color: var(--muted); font-weight: normal; display: block; margin-top: 3px; }
+  .day {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; margin: 6px 0; border-radius: 7px; border: 1px solid var(--line);
+    background: #fdfbf7; transition: all 0.15s;
+  }
+  .day:hover { background: #fbf6ee; }
+  .day.done { opacity: 0.55; background: #f0f0eb; }
+  .day input[type="checkbox"] {
+    margin-top: 3px; width: 17px; height: 17px; cursor: pointer; accent-color: var(--accent);
+  }
+  .day .content { flex: 1; }
+  .day .title { font-weight: 600; font-size: 13.5px; }
+  .day .desc { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .day .pill {
+    font-size: 10.5px; padding: 1px 7px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .day .pill.d1 { background: #f4ddd0; color: #a44d30; }
+  .day .pill.d2 { background: #d6e4f4; color: #2c4a7a; }
+  .day .pill.d3 { background: #f9e5b2; color: #7a5a00; }
+  .day .pill.d4 { background: #dceee0; color: #1f5a36; }
+  .day .pill.d5 { background: #e8d6f4; color: #5a3a7a; }
+  .day .pill.exam { background: #fff3d6; color: var(--warn); }
+  .day .pill.setup { background: #e0e0e0; color: var(--ink-soft); }
+
+  .tip {
+    background: #fff3d6; border-left: 3px solid var(--warn);
+    padding: 12px 14px; border-radius: 6px; margin: 14px 0; font-size: 14px; color: var(--ink-soft);
+  }
+  .tip strong { color: var(--warn); }
+
+  .hide { display: none; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 30px; }
+
+  @media (max-width: 700px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    nav.tabs button { font-size: 12px; padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <h1>Claude Certified Architect — Foundations (CCA-F)</h1>
+    <p>Your 30-day prep plan • 1–2 hours/day • Heavy hands-on track</p>
+    <div class="stats">
+      <div class="stat"><div class="label">Exam Cost</div><div class="val">$99 USD</div></div>
+      <div class="stat"><div class="label">Questions</div><div class="val">60 scenario-based</div></div>
+      <div class="stat"><div class="label">Duration</div><div class="val">120 minutes</div></div>
+      <div class="stat"><div class="label">Passing Score</div><div class="val">720 / 1000</div></div>
+      <div class="stat"><div class="label">Level</div><div class="val">301 (advanced)</div></div>
+      <div class="stat"><div class="label">Validity</div><div class="val">2 years</div></div>
+    </div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-row">
+      <div><strong>Overall Progress</strong> <span id="progressText" style="color:var(--muted); font-size:13px; margin-left:6px;">0 of 0 items complete</span></div>
+      <div><span class="pct" id="progressPct">0%</span><button class="reset-btn" id="resetBtn">Reset</button></div>
+    </div>
+    <div class="bar"><div id="progressBar" style="width: 0%"></div></div>
+  </div>
+
+  <nav class="tabs">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="d1">Domain 1<span class="w">27%</span></button>
+    <button data-tab="d2">Domain 2<span class="w">20%</span></button>
+    <button data-tab="d3">Domain 3<span class="w">20%</span></button>
+    <button data-tab="d4">Domain 4<span class="w">18%</span></button>
+    <button data-tab="d5">Domain 5<span class="w">15%</span></button>
+    <button data-tab="schedule">Schedule</button>
+    <button data-tab="exam-day">Exam Day</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <section class="panel" id="overview">
+    <h2>How to use this guide</h2>
+    <p class="lede">Each domain tab below is a self-contained study path — what to learn, what resources cover it, what to build, and how to check yourself.</p>
+
+    <h3><span class="step-num">1</span> Pick a domain tab</h3>
+    <p>The 5 domain tabs are ordered the way you should study them — Domain 1 first because it's 27% of the exam, then Domain 2, etc. Each tab contains everything you need for that domain in one place: <strong>Topics → Resources → Labs → Self-check</strong>. No more cross-referencing.</p>
+
+    <h3><span class="step-num">2</span> Work through it</h3>
+    <p>Read or watch the resources, tick off topics as you understand them, build the lab, then answer the self-check questions out loud or in writing. If you can't answer cleanly, revisit the resources for that domain.</p>
+
+    <h3><span class="step-num">3</span> Use the Schedule tab as a day-by-day rhythm</h3>
+    <p>The Schedule tab tells you which domain to focus on each day for 30 days. Each day's checkbox links back to the relevant domain.</p>
+
+    <h3><span class="step-num">4</span> Take mocks in the final week</h3>
+    <p>Days 25 and 28 are full 60-question mock exams. The Exam Day tab covers logistics for the real thing.</p>
+
+    <div class="tip"><strong>Exam reality check:</strong> wrong answers are designed to sound like good engineering. The exam tests judgment, not recall. That's why every domain tab below has a Labs section — you need to <em>build</em> these things, not just read about them.</div>
+
+    <h3>Quick exam facts</h3>
+    <p>60 scenario-based multiple-choice questions, anchored to 6 production scenarios (4 randomly served per sitting): customer support agent, code generation, research system, developer productivity, CI/CD pipeline, data extraction. 120 minutes total, 720/1000 to pass. Credential valid 2 years. $99 USD, free for Anthropic Partner Network members.</p>
+  </section>
+
+  <!-- ============ DOMAIN 1 ============ -->
+  <section class="panel hide" id="d1">
+    <div class="domain-hdr">
+      <div>
+        <h2 style="margin:0;">Domain 1 — Agentic Architecture & Orchestration</h2>
+        <div class="summary">How Claude operates inside autonomous agent loops. The biggest domain — start here.</div>
+      </div>
+      <div class="weight-pill">27% of exam</div>
+    </div>
+
+    <h3><span class="step-num">1</span> Topics to master</h3>
+    <p class="lede">Tick each one as you understand it. Aim to be able to explain each in your own words.</p>
+    <div class="topic" data-id="d1-t1"><input type="checkbox"><div class="content"><strong>Observe → Think → Act → Respond loop.</strong> What happens in each phase, what data flows between them, where things commonly break.</div></div>
+    <div class="topic" data-id="d1-t2"><input type="checkbox"><div class="content"><strong>The 5 agentic patterns:</strong> prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer. When to use each.</div></div>
+    <div class="topic" data-id="d1-t3"><input type="checkbox"><div class="content"><strong>Workflows vs. agents.</strong> The trade-off: predictability vs. flexibility. When a simple workflow beats an autonomous agent.</div></div>
+    <div class="topic" data-id="d1-t4"><input type="checkbox"><div class="content"><strong>Subagent orchestration:</strong> parallel vs. sequential dispatch, how the parent passes context to children, how results are aggregated.</div></div>
+    <div class="topic" data-id="d1-t5"><input type="checkbox"><div class="content"><strong>Minimal-footprint design.</strong> Smallest possible agent that solves the problem — fewer tools, fewer turns, fewer subagents = more reliable.</div></div>
+    <div class="topic" data-id="d1-t6"><input type="checkbox"><div class="content"><strong>Clarifying ambiguity</strong> before kicking off a long autonomous run. When to ask the user vs. when to assume.</div></div>
+    <div class="topic" data-id="d1-t7"><input type="checkbox"><div class="content"><strong>Human-in-the-loop interrupt design.</strong> Where to insert checkpoints, how to surface decision points cleanly.</div></div>
+    <div class="topic" data-id="d1-t8"><input type="checkbox"><div class="content"><strong>Failure recovery:</strong> what to do when a subagent times out, returns garbage, or contradicts another subagent's output.</div></div>
+
+    <h3><span class="step-num">2</span> Resources for this domain</h3>
+    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Building with the Claude Agent SDK"</span>
+      <div class="res-desc">Core course covering agent loops, tool calls, and the SDK API. ~2 hours. Free, requires email signup.</div>
+    </a>
+    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Subagents"</span>
+      <div class="res-desc">Specifically on subagent design, parallel/sequential dispatch, and orchestration patterns. ~1 hour.</div>
+    </a>
+    <a class="res" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">"Building effective agents" — Anthropic engineering blog</span>
+      <div class="res-desc">THE canonical reference for the 5 agentic patterns. Read it 3 times. Single most important reading for this domain.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/agents-and-tools/overview" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude API docs: Agents & Tools overview</span>
+      <div class="res-desc">Reference material on tool-use loops, stop reasons, and message structure during agent execution.</div>
+    </a>
+    <a class="res" href="https://github.com/anthropics/claude-agent-sdk-python" target="_blank">
+      <span class="res-tag free">Free</span><span class="res-title">Claude Agent SDK (Python) — GitHub</span>
+      <div class="res-desc">Official SDK. The <code>examples/</code> folder is gold — read every example.</div>
+    </a>
+
+    <h3><span class="step-num">3</span> Hands-on labs</h3>
+    <div class="lab-card">
+      <h5>Lab 1A — Build a tool-using agent</h5>
+      <div class="lab-meta">~2 hours • Maps to scenarios: Research, Dev Productivity</div>
+      <ol>
+        <li>Install <code>claude-agent-sdk</code>. Build an agent with 3 tools: <code>search_web</code>, <code>calculator</code>, <code>save_note</code>.</li>
+        <li>Task it with: "Research the top 3 EV manufacturers by 2025 deliveries, calculate market share, save a markdown summary."</li>
+        <li>Log every observe→think→act step. Watch the loop.</li>
+        <li>Deliberately break one tool. Observe the failure. Add a recovery path.</li>
+      </ol>
+    </div>
+    <div class="lab-card">
+      <h5>Lab 1B — Orchestrator-worker pattern</h5>
+      <div class="lab-meta">~2 hours • Maps to scenarios: Research, Customer Support</div>
+      <ol>
+        <li>Build a parent agent that decomposes a question into 2–3 parallel research subtasks.</li>
+        <li>Dispatch each to a worker subagent. Wait for all to return.</li>
+        <li>Synthesize results in the parent.</li>
+        <li>Add a timeout + fallback path for when a worker fails.</li>
+        <li>Add a human-in-the-loop checkpoint before the final synthesis step.</li>
+      </ol>
+    </div>
+
+    <h3><span class="step-num">4</span> Self-check (answer out loud before moving on)</h3>
+    <div class="check-q"><strong>Q1</strong>You're building a code-review agent. Should it be a single autonomous agent with file-edit tools, or an orchestrator dispatching review-specific subagents? What governs the choice?</div>
+    <div class="check-q"><strong>Q2</strong>A subagent returns an answer that contradicts another subagent. The parent has to decide. Name 3 strategies and when each is appropriate.</div>
+    <div class="check-q"><strong>Q3</strong>Why is "minimal-footprint" agent design more reliable than feature-rich? Give a concrete example.</div>
+    <div class="check-q"><strong>Q4</strong>When should an agent ask the user a clarifying question vs. just proceed with an assumption?</div>
+  </section>
+
+  <!-- ============ DOMAIN 2 ============ -->
+  <section class="panel hide" id="d2">
+    <div class="domain-hdr">
+      <div>
+        <h2 style="margin:0;">Domain 2 — Claude Code Configuration & Workflows</h2>
+        <div class="summary">Configuring Claude Code correctly for production projects.</div>
+      </div>
+      <div class="weight-pill">20% of exam</div>
+    </div>
+
+    <h3><span class="step-num">1</span> Topics to master</h3>
+    <div class="topic" data-id="d2-t1"><input type="checkbox"><div class="content"><strong>CLAUDE.md structure:</strong> what goes in it, what doesn't, how it gets injected into context.</div></div>
+    <div class="topic" data-id="d2-t2"><input type="checkbox"><div class="content"><strong>Settings hierarchy:</strong> user (<code>~/.claude/settings.json</code>) → project (<code>.claude/settings.json</code>) → local (<code>.claude/settings.local.json</code>). Which overrides which.</div></div>
+    <div class="topic" data-id="d2-t3"><input type="checkbox"><div class="content"><strong>Slash commands:</strong> how to define them in <code>.claude/commands/</code>, scoping rules, argument passing.</div></div>
+    <div class="topic" data-id="d2-t4"><input type="checkbox"><div class="content"><strong>Hooks:</strong> PreToolUse, PostToolUse, UserPromptSubmit, Notification — when each fires, how to block actions.</div></div>
+    <div class="topic" data-id="d2-t5"><input type="checkbox"><div class="content"><strong>Permissions:</strong> allowed/denied tool patterns, MCP server allow-lists, how permission prompts work.</div></div>
+    <div class="topic" data-id="d2-t6"><input type="checkbox"><div class="content"><strong>Subagents in <code>.claude/agents/</code>:</strong> the agent definition file, when Claude Code invokes them automatically.</div></div>
+    <div class="topic" data-id="d2-t7"><input type="checkbox"><div class="content"><strong>MCP server config</strong> inside <code>.claude/settings.json</code> — adding, scoping, and debugging servers.</div></div>
+
+    <h3><span class="step-num">2</span> Resources for this domain</h3>
+    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Claude Code in Action"</span>
+      <div class="res-desc">The primary prep course for this domain. Walks through CLAUDE.md, slash commands, hooks, and subagent invocation.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude Code documentation — full reference</span>
+      <div class="res-desc">Read these sections in order: CLAUDE.md → settings → slash commands → hooks → subagents → MCP integration.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/claude-code/sub-agents" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude Code: Subagents reference</span>
+      <div class="res-desc">Subagent definition file format, frontmatter fields, when Claude Code routes to a subagent automatically.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/claude-code/hooks" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude Code: Hooks reference</span>
+      <div class="res-desc">All 4 hook types, return-code semantics, and concrete examples (blocking writes outside project, logging, etc.).</div>
+    </a>
+
+    <h3><span class="step-num">3</span> Hands-on labs</h3>
+    <div class="lab-card">
+      <h5>Lab 2A — Set up a real Claude Code project</h5>
+      <div class="lab-meta">~1.5 hours • Maps to: Dev Productivity scenario</div>
+      <ol>
+        <li>Create a fresh project folder. Initialize with <code>/init</code>.</li>
+        <li>Write a CLAUDE.md describing the project, conventions, and "do not touch" files.</li>
+        <li>Set up <code>.claude/settings.json</code> with at least one permission rule and one allowed MCP server.</li>
+        <li>Verify the settings hierarchy by overriding a value in <code>.claude/settings.local.json</code>.</li>
+      </ol>
+    </div>
+    <div class="lab-card">
+      <h5>Lab 2B — Build a slash command + a hook</h5>
+      <div class="lab-meta">~1.5 hours</div>
+      <ol>
+        <li>Author a <code>/release-notes</code> slash command that takes a version argument and outputs a markdown changelog.</li>
+        <li>Write a PreToolUse hook that blocks writes to <code>secrets/</code>.</li>
+        <li>Test both with a normal Claude Code session.</li>
+      </ol>
+    </div>
+    <div class="lab-card">
+      <h5>Lab 2C — Custom subagent</h5>
+      <div class="lab-meta">~1 hour</div>
+      <ol>
+        <li>Create <code>.claude/agents/test-writer.md</code> with frontmatter (name, description, tools).</li>
+        <li>Trigger it from a natural-language request like "write tests for the new module".</li>
+        <li>Tune the description until it triggers reliably but doesn't fire for unrelated requests.</li>
+      </ol>
+    </div>
+
+    <h3><span class="step-num">4</span> Self-check</h3>
+    <div class="check-q"><strong>Q1</strong>Same setting key is defined in user, project, and local settings. Which wins, and why is that the right precedence?</div>
+    <div class="check-q"><strong>Q2</strong>You want to prevent Claude Code from ever running <code>rm -rf</code>. Which hook do you use, and what's the return signal that blocks the action?</div>
+    <div class="check-q"><strong>Q3</strong>When does Claude Code automatically delegate to a subagent vs. handle the request itself?</div>
+    <div class="check-q"><strong>Q4</strong>What belongs in CLAUDE.md vs. a slash command vs. a subagent? Give an example of each.</div>
+  </section>
+
+  <!-- ============ DOMAIN 3 ============ -->
+  <section class="panel hide" id="d3">
+    <div class="domain-hdr">
+      <div>
+        <h2 style="margin:0;">Domain 3 — Prompt Engineering & Structured Output</h2>
+        <div class="summary">The tricky one — wrong answers sound like good engineering.</div>
+      </div>
+      <div class="weight-pill">20% of exam</div>
+    </div>
+
+    <h3><span class="step-num">1</span> Topics to master</h3>
+    <div class="topic" data-id="d3-t1"><input type="checkbox"><div class="content"><strong>XML tagging and role separation.</strong> Why XML > markdown for structuring complex prompts.</div></div>
+    <div class="topic" data-id="d3-t2"><input type="checkbox"><div class="content"><strong>System vs. user vs. assistant</strong> message roles, and what belongs in each.</div></div>
+    <div class="topic" data-id="d3-t3"><input type="checkbox"><div class="content"><strong>Chain-of-thought</strong> — when to use it, when it hurts, how extended thinking differs.</div></div>
+    <div class="topic" data-id="d3-t4"><input type="checkbox"><div class="content"><strong>Prompt chaining:</strong> breaking a complex task into sequential prompts where each builds on the last.</div></div>
+    <div class="topic" data-id="d3-t5"><input type="checkbox"><div class="content"><strong>Few-shot examples:</strong> how many, how to pick them, how they bias output.</div></div>
+    <div class="topic" data-id="d3-t6"><input type="checkbox"><div class="content"><strong>Prefilling assistant turn</strong> with <code>{</code> or other tokens to force structure.</div></div>
+    <div class="topic" data-id="d3-t7"><input type="checkbox"><div class="content"><strong>JSON / structured output:</strong> when to use a schema, when prefilling is enough, when tool-use is the right mechanism.</div></div>
+    <div class="topic" data-id="d3-t8"><input type="checkbox"><div class="content"><strong>Common failure modes:</strong> over-specification, contradicting instructions, instructions that the model can't follow.</div></div>
+
+    <h3><span class="step-num">2</span> Resources for this domain</h3>
+    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Prompt Engineering" course</span>
+      <div class="res-desc">Primary prep course. Covers every technique on the exam.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Prompt engineering guide — docs.claude.com</span>
+      <div class="res-desc">Cover-to-cover read. Especially: "Use XML tags," "Chain prompts," "Prefill response," and "Be clear and direct."</div>
+    </a>
+    <a class="res" href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Prompt Engineering Interactive Tutorial — GitHub</span>
+      <div class="res-desc">Free Jupyter notebooks. The single fastest way to internalize Domain 3. Run every cell.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/structured-outputs" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Structured outputs reference</span>
+      <div class="res-desc">JSON mode, tool-use as structured output, prefilling strategies.</div>
+    </a>
+
+    <h3><span class="step-num">3</span> Hands-on labs</h3>
+    <div class="lab-card">
+      <h5>Lab 3A — Production-grade classification prompt</h5>
+      <div class="lab-meta">~2 hours • Maps to scenarios: Customer Support, Data Extraction</div>
+      <ol>
+        <li>Write a single prompt that takes a customer message and returns JSON with <code>sentiment</code>, <code>topic</code>, <code>urgency</code>.</li>
+        <li>Use XML tags, 3–5 few-shot examples, and JSON prefilling.</li>
+        <li>Build a 20-example test set by hand. Include 5 ambiguous edge cases.</li>
+        <li>Run the prompt across all 20, compute accuracy. Iterate until 90%+.</li>
+        <li>Compare with and without chain-of-thought enabled — note the trade-off.</li>
+      </ol>
+    </div>
+    <div class="lab-card">
+      <h5>Lab 3B — Prompt chain</h5>
+      <div class="lab-meta">~1.5 hours</div>
+      <ol>
+        <li>Break a complex task into 3 sequential prompts (e.g., extract → classify → route a support ticket).</li>
+        <li>Pass the structured output of each step as input to the next.</li>
+        <li>Compare quality vs. a single mega-prompt that tries to do all 3 at once.</li>
+      </ol>
+    </div>
+
+    <h3><span class="step-num">4</span> Self-check</h3>
+    <div class="check-q"><strong>Q1</strong>You need reliable JSON output. Rank these by reliability: (a) ask for JSON in the prompt, (b) prefill with <code>{</code>, (c) use tool-use with a schema. Why?</div>
+    <div class="check-q"><strong>Q2</strong>When does chain-of-thought hurt rather than help?</div>
+    <div class="check-q"><strong>Q3</strong>You have a 3-step task. When do you chain 3 prompts vs. write one big prompt?</div>
+    <div class="check-q"><strong>Q4</strong>Two few-shot examples vs. ten. What governs the right number?</div>
+  </section>
+
+  <!-- ============ DOMAIN 4 ============ -->
+  <section class="panel hide" id="d4">
+    <div class="domain-hdr">
+      <div>
+        <h2 style="margin:0;">Domain 4 — Tool Design & MCP Integration</h2>
+        <div class="summary">Building reliable tools and MCP servers Claude can use in production.</div>
+      </div>
+      <div class="weight-pill">18% of exam</div>
+    </div>
+
+    <h3><span class="step-num">1</span> Topics to master</h3>
+    <div class="topic" data-id="d4-t1"><input type="checkbox"><div class="content"><strong>MCP's 3 primitives:</strong> tools, resources, prompts. What each is for, when to use each.</div></div>
+    <div class="topic" data-id="d4-t2"><input type="checkbox"><div class="content"><strong>JSON Schema for tool inputs</strong> — required fields, enums, descriptions, nested objects.</div></div>
+    <div class="topic" data-id="d4-t3"><input type="checkbox"><div class="content"><strong>Writing tool descriptions Claude can use reliably</strong> — clarity, scoping, examples, anti-patterns.</div></div>
+    <div class="topic" data-id="d4-t4"><input type="checkbox"><div class="content"><strong>stdio vs. SSE transport</strong> — when to use each, latency vs. portability trade-offs.</div></div>
+    <div class="topic" data-id="d4-t5"><input type="checkbox"><div class="content"><strong>Auth patterns:</strong> bearer tokens, OAuth, scoped permissions for production MCP.</div></div>
+    <div class="topic" data-id="d4-t6"><input type="checkbox"><div class="content"><strong>Tool-use loop:</strong> tool_use vs. tool_result blocks, stop_reason values, error handling.</div></div>
+    <div class="topic" data-id="d4-t7"><input type="checkbox"><div class="content"><strong>Agent Skills:</strong> SKILL.md structure, trigger phrases, how they differ from MCP tools and slash commands.</div></div>
+
+    <h3><span class="step-num">2</span> Resources for this domain</h3>
+    <a class="res" href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Introduction to Model Context Protocol"</span>
+      <div class="res-desc">Primary MCP course. Covers all 3 primitives and the server/client architecture.</div>
+    </a>
+    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Agent Skills"</span>
+      <div class="res-desc">SKILL.md format, trigger conditions, packaging, and distribution.</div>
+    </a>
+    <a class="res" href="https://modelcontextprotocol.io" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">modelcontextprotocol.io — full spec & tutorials</span>
+      <div class="res-desc">Start with "Build an MCP Server" tutorial, then read the Concepts pages on tools/resources/prompts.</div>
+    </a>
+    <a class="res" href="https://github.com/modelcontextprotocol/servers" target="_blank">
+      <span class="res-tag free">Free</span><span class="res-title">Reference MCP servers — GitHub</span>
+      <div class="res-desc">Production-quality examples (filesystem, git, github, slack, etc.). Steal the patterns for Lab 4A.</div>
+    </a>
+    <a class="res" href="https://www.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic" target="_blank">
+      <span class="res-tag video">Video</span><span class="res-title">DeepLearning.AI: "MCP — Build Rich-Context AI Apps with Anthropic"</span>
+      <div class="res-desc">Andrew Ng's short course. Excellent complement to the Anthropic Academy MCP module. Free with email.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/tool-use" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Tool use reference — docs.claude.com</span>
+      <div class="res-desc">JSON Schema details, tool_use/tool_result block semantics, error patterns.</div>
+    </a>
+
+    <h3><span class="step-num">3</span> Hands-on labs</h3>
+    <div class="lab-card">
+      <h5>Lab 4A — Build your own MCP server</h5>
+      <div class="lab-meta">~2.5 hours • Maps to scenarios: Dev Productivity, CI/CD</div>
+      <ol>
+        <li>Use FastMCP (Python) or <code>@modelcontextprotocol/sdk</code> (TypeScript).</li>
+        <li>Expose 2 tools (e.g., <code>git_status</code>, <code>run_tests</code>), 1 resource (e.g., current diff), 1 prompt (e.g., "review-changes").</li>
+        <li>Connect to Claude Desktop via stdio. Verify it appears in the tools list.</li>
+        <li>Write deliberately bad tool descriptions; observe failures. Improve them; measure the gain.</li>
+        <li><em>Bonus:</em> switch to SSE transport and host on localhost.</li>
+      </ol>
+    </div>
+    <div class="lab-card">
+      <h5>Lab 4B — Write an Agent Skill</h5>
+      <div class="lab-meta">~1 hour</div>
+      <ol>
+        <li>Pick a recurring task (release notes, CSV cleanup, weekly report).</li>
+        <li>Write <code>SKILL.md</code> with clear description and trigger phrases.</li>
+        <li>Add supporting scripts/templates the skill references.</li>
+        <li>Install and verify it triggers correctly from natural language — but not for unrelated requests.</li>
+      </ol>
+    </div>
+
+    <h3><span class="step-num">4</span> Self-check</h3>
+    <div class="check-q"><strong>Q1</strong>When do you expose something as a tool vs. a resource vs. a prompt? Give a concrete example of each.</div>
+    <div class="check-q"><strong>Q2</strong>You're deploying an MCP server to be used by multiple users over the network. stdio or SSE? Why?</div>
+    <div class="check-q"><strong>Q3</strong>What makes a tool description "reliable"? Name 3 properties.</div>
+    <div class="check-q"><strong>Q4</strong>An Agent Skill, an MCP tool, and a slash command can all package a workflow. When is each the right choice?</div>
+  </section>
+
+  <!-- ============ DOMAIN 5 ============ -->
+  <section class="panel hide" id="d5">
+    <div class="domain-hdr">
+      <div>
+        <h2 style="margin:0;">Domain 5 — Context Management & Reliability</h2>
+        <div class="summary">Keeping agents reliable and cost-efficient at scale.</div>
+      </div>
+      <div class="weight-pill">15% of exam</div>
+    </div>
+
+    <h3><span class="step-num">1</span> Topics to master</h3>
+    <div class="topic" data-id="d5-t1"><input type="checkbox"><div class="content"><strong>Prompt caching:</strong> <code>cache_control</code> breakpoints, TTL semantics, when caching saves cost vs. latency.</div></div>
+    <div class="topic" data-id="d5-t2"><input type="checkbox"><div class="content"><strong>Token estimation</strong> and budget management across multi-turn conversations.</div></div>
+    <div class="topic" data-id="d5-t3"><input type="checkbox"><div class="content"><strong>Conversation compaction</strong> and summarization — when, where, what to keep.</div></div>
+    <div class="topic" data-id="d5-t4"><input type="checkbox"><div class="content"><strong>Multi-turn quality:</strong> how quality degrades over long sessions and how to preserve it.</div></div>
+    <div class="topic" data-id="d5-t5"><input type="checkbox"><div class="content"><strong>The CALM framework</strong> for context-aware LLM management.</div></div>
+    <div class="topic" data-id="d5-t6"><input type="checkbox"><div class="content"><strong>Retries with exponential backoff,</strong> timeouts, and idempotent tool design.</div></div>
+    <div class="topic" data-id="d5-t7"><input type="checkbox"><div class="content"><strong>Validating tool outputs</strong> before passing them back to the model.</div></div>
+
+    <h3><span class="step-num">2</span> Resources for this domain</h3>
+    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/prompt-caching" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Prompt caching reference — docs.claude.com</span>
+      <div class="res-desc">Cache breakpoints, the 1024-token minimum, TTLs, pricing implications. Most-tested topic in this domain.</div>
+    </a>
+    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/context-windows" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Long-context guidance — docs.claude.com</span>
+      <div class="res-desc">Best practices for 100K+ token prompts, where to put long documents, retrieval patterns.</div>
+    </a>
+    <a class="res" href="https://www.anthropic.com/news/contextual-retrieval" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">"Introducing Contextual Retrieval" — Anthropic blog</span>
+      <div class="res-desc">How to retrieve and inject context cleanly. Shows caching + retrieval working together.</div>
+    </a>
+    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Production-Ready Claude" (or similar advanced API module)</span>
+      <div class="res-desc">Covers caching, batching, error handling, and the reliability primitives the exam tests on.</div>
+    </a>
+
+    <h3><span class="step-num">3</span> Hands-on labs</h3>
+    <div class="lab-card">
+      <h5>Lab 5A — Add prompt caching to a previous lab</h5>
+      <div class="lab-meta">~1 hour</div>
+      <ol>
+        <li>Take your Lab 3A classification prompt. Add a long static system prompt (~2000 tokens of guidelines).</li>
+        <li>Add a <code>cache_control: {type: "ephemeral"}</code> breakpoint at the end of the static portion.</li>
+        <li>Make 5 calls in a row. Compare latency and reported token usage with/without caching.</li>
+      </ol>
+    </div>
+    <div class="lab-card">
+      <h5>Lab 5B — Reliability wrapper</h5>
+      <div class="lab-meta">~1.5 hours</div>
+      <ol>
+        <li>Wrap your Lab 1A agent in a retry layer: exponential backoff on 5xx errors, max-retries cap.</li>
+        <li>Add tool-output validation: if a tool returns malformed JSON, retry the tool call with a clarifying message instead of passing garbage back to the model.</li>
+        <li>Add a token-budget guardrail: terminate gracefully if the conversation exceeds a threshold.</li>
+      </ol>
+    </div>
+
+    <h3><span class="step-num">4</span> Self-check</h3>
+    <div class="check-q"><strong>Q1</strong>What's the minimum number of tokens that can be cached, and what happens if your cached segment is below it?</div>
+    <div class="check-q"><strong>Q2</strong>You're paying too much for a multi-turn agent. Walk through the diagnostic: caching? compaction? context bloat? Which do you check first and how?</div>
+    <div class="check-q"><strong>Q3</strong>A tool returns intermittent 500s. Should the agent retry, surface the error to the user, or fall back? What governs the choice?</div>
+    <div class="check-q"><strong>Q4</strong>Why do agents degrade in quality over long conversations, and what are 2 mitigation strategies?</div>
+  </section>
+
+  <!-- ============ SCHEDULE ============ -->
+  <section class="panel hide" id="schedule">
+    <h2>30-day schedule</h2>
+    <p class="lede">~1.5 hours per day. The colored pill on each day tells you which domain to focus on — click it to jump there in the tabs above. Tick days as you complete them; progress saves automatically.</p>
+
+    <div class="week">
+      <h3>Week 1 — Foundations & Domain 3<span class="week-meta">Days 1–7 • Prompt Engineering (20%) + warm-up</span></h3>
+      <div class="day" data-id="d1day"><input type="checkbox"><div class="content"><div class="title">Day 1 — Set up your environment <span class="pill setup">SETUP</span></div><div class="desc">Create Anthropic API key. Install Claude SDK (<code>pip install anthropic</code>) and Claude Code (<code>npm install -g @anthropic-ai/claude-code</code>). Enroll on anthropic.skilljar.com.</div></div></div>
+      <div class="day" data-id="d2day"><input type="checkbox"><div class="content"><div class="title">Day 2 — Anthropic Academy: Intro to Claude + API Fundamentals <span class="pill setup">SETUP</span></div><div class="desc">Foundational courses. Take notes on message structure, roles, stop reasons.</div></div></div>
+      <div class="day" data-id="d3day"><input type="checkbox"><div class="content"><div class="title">Day 3 — Domain 3 topics 1–4 <span class="pill d3">DOMAIN 3</span></div><div class="desc">Open Domain 3 tab. Work through XML tagging, roles, chain-of-thought, prompt chaining. Read the official prompt engineering guide.</div></div></div>
+      <div class="day" data-id="d4day"><input type="checkbox"><div class="content"><div class="title">Day 4 — Domain 3 topics 5–8 <span class="pill d3">DOMAIN 3</span></div><div class="desc">Few-shot, prefilling, JSON output, failure modes. Run the Prompt Engineering Interactive Tutorial notebooks.</div></div></div>
+      <div class="day" data-id="d5day"><input type="checkbox"><div class="content"><div class="title">Day 5 — Lab 3A part 1 <span class="pill d3">DOMAIN 3</span></div><div class="desc">Build the classification prompt + 20-example test set.</div></div></div>
+      <div class="day" data-id="d6day"><input type="checkbox"><div class="content"><div class="title">Day 6 — Lab 3A part 2 + Lab 3B <span class="pill d3">DOMAIN 3</span></div><div class="desc">Iterate Lab 3A to 90%+. Then chain it into Lab 3B.</div></div></div>
+      <div class="day" data-id="d7day"><input type="checkbox"><div class="content"><div class="title">Day 7 — Domain 3 self-check + flashcards <span class="pill d3">DOMAIN 3</span></div><div class="desc">Answer all 4 self-check questions in writing. Make flashcards for techniques and when to use each.</div></div></div>
+    </div>
+
+    <div class="week">
+      <h3>Week 2 — Domain 1 (the big one)<span class="week-meta">Days 8–14 • Agentic Architecture (27%) — highest-weight domain</span></h3>
+      <div class="day" data-id="d8day"><input type="checkbox"><div class="content"><div class="title">Day 8 — Domain 1 topics 1–4 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Agent loop, the 5 patterns, workflows vs. agents, subagent orchestration. Take the Anthropic Academy agent course.</div></div></div>
+      <div class="day" data-id="d9day"><input type="checkbox"><div class="content"><div class="title">Day 9 — "Building effective agents" deep read <span class="pill d1">DOMAIN 1</span></div><div class="desc">Read the engineering blog post twice. For each of the 5 patterns, sketch which exam scenario it fits.</div></div></div>
+      <div class="day" data-id="d10day"><input type="checkbox"><div class="content"><div class="title">Day 10 — Lab 1A <span class="pill d1">DOMAIN 1</span></div><div class="desc">Build the 3-tool research agent. Log every loop step.</div></div></div>
+      <div class="day" data-id="d11day"><input type="checkbox"><div class="content"><div class="title">Day 11 — Domain 1 topics 5–8 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Minimal-footprint, ambiguity, human-in-the-loop, failure recovery. Take the Subagents course.</div></div></div>
+      <div class="day" data-id="d12day"><input type="checkbox"><div class="content"><div class="title">Day 12 — Lab 1B part 1 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Build the orchestrator-worker scaffold with 2–3 parallel subagents.</div></div></div>
+      <div class="day" data-id="d13day"><input type="checkbox"><div class="content"><div class="title">Day 13 — Lab 1B part 2 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Add timeouts, fallback paths, and a human-in-the-loop checkpoint. Break it deliberately to test recovery.</div></div></div>
+      <div class="day" data-id="d14day"><input type="checkbox"><div class="content"><div class="title">Day 14 — Domain 1 self-check + practice quiz <span class="pill d1">DOMAIN 1</span></div><div class="desc">Answer all 4 self-check questions. Take a free agentic-architecture practice quiz; log every wrong answer.</div></div></div>
+    </div>
+
+    <div class="week">
+      <h3>Week 3 — Domains 2 + 4<span class="week-meta">Days 15–21 • Claude Code (20%) + Tools/MCP (18%)</span></h3>
+      <div class="day" data-id="d15day"><input type="checkbox"><div class="content"><div class="title">Day 15 — Domain 2 topics 1–4 + "Claude Code in Action" course <span class="pill d2">DOMAIN 2</span></div><div class="desc">CLAUDE.md, settings hierarchy, slash commands, hooks.</div></div></div>
+      <div class="day" data-id="d16day"><input type="checkbox"><div class="content"><div class="title">Day 16 — Lab 2A + 2B <span class="pill d2">DOMAIN 2</span></div><div class="desc">Real Claude Code project with CLAUDE.md, settings, a slash command, and a hook.</div></div></div>
+      <div class="day" data-id="d17day"><input type="checkbox"><div class="content"><div class="title">Day 17 — Domain 2 topics 5–7 + Lab 2C <span class="pill d2">DOMAIN 2</span></div><div class="desc">Permissions, subagent files, MCP server config. Build the test-writer subagent.</div></div></div>
+      <div class="day" data-id="d18day"><input type="checkbox"><div class="content"><div class="title">Day 18 — Domain 4 topics 1–4 + Intro to MCP course <span class="pill d4">DOMAIN 4</span></div><div class="desc">Primitives, JSON Schema, tool descriptions, transports.</div></div></div>
+      <div class="day" data-id="d19day"><input type="checkbox"><div class="content"><div class="title">Day 19 — Lab 4A part 1 <span class="pill d4">DOMAIN 4</span></div><div class="desc">Build the MCP server with 2 tools + 1 resource + 1 prompt. Connect to Claude Desktop.</div></div></div>
+      <div class="day" data-id="d20day"><input type="checkbox"><div class="content"><div class="title">Day 20 — Domain 4 topics 5–7 + Lab 4B <span class="pill d4">DOMAIN 4</span></div><div class="desc">Auth, tool-use loop semantics, Agent Skills. Write a SKILL.md and verify it triggers.</div></div></div>
+      <div class="day" data-id="d21day"><input type="checkbox"><div class="content"><div class="title">Day 21 — Domain 2 + 4 self-checks + mixed quiz <span class="pill d2">D2</span> <span class="pill d4">D4</span></div><div class="desc">Both self-checks. Take a 30-question mixed mock covering Domains 1–4. Score honestly.</div></div></div>
+    </div>
+
+    <div class="week">
+      <h3>Week 4 — Domain 5 + Mock Exams<span class="week-meta">Days 22–30 • Context/Reliability (15%) + full-length practice</span></h3>
+      <div class="day" data-id="d22day"><input type="checkbox"><div class="content"><div class="title">Day 22 — Domain 5 topics 1–4 + caching docs <span class="pill d5">DOMAIN 5</span></div><div class="desc">Prompt caching, token estimation, compaction, multi-turn quality.</div></div></div>
+      <div class="day" data-id="d23day"><input type="checkbox"><div class="content"><div class="title">Day 23 — Lab 5A <span class="pill d5">DOMAIN 5</span></div><div class="desc">Add prompt caching to a previous lab. Measure the latency/cost delta.</div></div></div>
+      <div class="day" data-id="d24day"><input type="checkbox"><div class="content"><div class="title">Day 24 — Domain 5 topics 5–7 + Lab 5B <span class="pill d5">DOMAIN 5</span></div><div class="desc">CALM, retries, validation. Wrap Lab 1A in a reliability layer.</div></div></div>
+      <div class="day" data-id="d25day"><input type="checkbox"><div class="content"><div class="title">Day 25 — Full-length Mock Exam #1 <span class="pill exam">MOCK</span></div><div class="desc">60 questions, 120 minutes, under exam conditions. No reviewing answers yet.</div></div></div>
+      <div class="day" data-id="d26day"><input type="checkbox"><div class="content"><div class="title">Day 26 — Mock #1 deep review <span class="pill exam">REVIEW</span></div><div class="desc">For every missed (or guessed-right) answer: write question, your answer, right answer, one-line reason.</div></div></div>
+      <div class="day" data-id="d27day"><input type="checkbox"><div class="content"><div class="title">Day 27 — Weak-spot drilling <span class="pill exam">REVIEW</span></div><div class="desc">Whichever domain scored worst, spend today on. Re-read docs, rerun the relevant lab.</div></div></div>
+      <div class="day" data-id="d28day"><input type="checkbox"><div class="content"><div class="title">Day 28 — Full-length Mock Exam #2 <span class="pill exam">MOCK</span></div><div class="desc">Different question set if possible. Target 80%+.</div></div></div>
+      <div class="day" data-id="d29day"><input type="checkbox"><div class="content"><div class="title">Day 29 — Final review <span class="pill exam">REVIEW</span></div><div class="desc">Flashcards + both wrong-answer logs. Sketch the 6 scenarios from memory and which pattern fits each.</div></div></div>
+      <div class="day" data-id="d30day"><input type="checkbox"><div class="content"><div class="title">Day 30 — Exam day <span class="pill exam">EXAM</span></div><div class="desc">Light review only. See Exam Day tab for the playbook.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ EXAM DAY ============ -->
+  <section class="panel hide" id="exam-day">
+    <h2>Exam day playbook</h2>
+
+    <h3><span class="step-num">1</span> 24 hours before</h3>
+    <p>Light review only — flashcards and your wrong-answer log. Do not learn new material. Confirm proctoring software works (system check). Charge your laptop. Clear your desk per proctoring rules.</p>
+
+    <h3><span class="step-num">2</span> During the exam</h3>
+    <p>120 minutes for 60 questions = <strong>2 minutes per question</strong>. Strategy:</p>
+    <p><strong>Pass 1 (~75 min):</strong> answer everything you're confident on; flag the rest. <strong>Pass 2 (~30 min):</strong> work the flagged ones. <strong>Pass 3 (~15 min):</strong> final review. Don't leave anything blank — no penalty for guessing on multiple choice.</p>
+
+    <div class="tip"><strong>The wrong-answer trap:</strong> when two options both look defensible, ask "which is the <em>minimum-footprint, most reliable</em> choice for a production system?" That framing picks the right one most of the time.</div>
+
+    <h3><span class="step-num">3</span> Scenario priming</h3>
+    <p>You'll get 4 of these 6 scenarios: customer support agent, code generation, research system, developer productivity, CI/CD pipeline, data extraction. Before reading questions in a scenario block, take 30 seconds to mentally identify the agentic pattern that fits (workflow vs. orchestrator-workers vs. evaluator-optimizer). That framing answers half the questions.</p>
+
+    <h3><span class="step-num">4</span> After</h3>
+    <p>Scaled scoring rescales raw correct count to 100–1000. 720 to pass — roughly ~70–75% raw. You'll see pass/fail plus a domain-level breakdown, useful even if you pass.</p>
+  </section>
+
+  <footer>Built for Sai • CCA-F prep • Progress saved locally in your browser</footer>
+</div>
+
+<script>
+  // ---- Tabs ----
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const panels = ['overview','d1','d2','d3','d4','d5','schedule','exam-day'];
+  function activate(target) {
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === target));
+    panels.forEach(p => {
+      const el = document.getElementById(p);
+      if (el) el.classList.toggle('hide', p !== target);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  tabs.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.tab)));
+
+  // Allow schedule pills to jump to domain tabs
+  document.querySelectorAll('.day .pill').forEach(pill => {
+    const cls = [...pill.classList].find(c => /^d[1-5]$/.test(c));
+    if (!cls) return;
+    pill.style.cursor = 'pointer';
+    pill.addEventListener('click', (e) => {
+      e.stopPropagation();
+      activate(cls);
+    });
+  });
+
+  // ---- Progress (localStorage) ----
+  const STORAGE_KEY = 'ccaf-progress-v2';
+  const allItems = document.querySelectorAll('.topic, .day');
+  const progressBar = document.getElementById('progressBar');
+  const progressPct = document.getElementById('progressPct');
+  const progressText = document.getElementById('progressText');
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+    catch (e) { return {}; }
+  }
+  function saveState(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function updateProgress() {
+    const total = allItems.length;
+    let done = 0;
+    allItems.forEach(el => { if (el.classList.contains('done')) done++; });
+    const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+    progressBar.style.width = pct + '%';
+    progressPct.textContent = pct + '%';
+    progressText.textContent = done + ' of ' + total + ' items complete';
+  }
+
+  const state = loadState();
+  allItems.forEach(item => {
+    const id = item.dataset.id;
+    const cb = item.querySelector('input[type="checkbox"]');
+    if (!cb || !id) return;
+    if (state[id]) { cb.checked = true; item.classList.add('done'); }
+    cb.addEventListener('change', () => {
+      item.classList.toggle('done', cb.checked);
+      const s = loadState();
+      if (cb.checked) s[id] = true; else delete s[id];
+      saveState(s);
+      updateProgress();
+    });
+  });
+  updateProgress();
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    allItems.forEach(el => {
+      el.classList.remove('done');
+      const cb = el.querySelector('input[type="checkbox"]');
+      if (cb) cb.checked = false;
+    });
+    updateProgress();
+  });
+</script>
+</body>
+</html>
