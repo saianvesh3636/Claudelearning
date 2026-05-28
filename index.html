@@ -270,25 +270,25 @@
     <div class="topic" data-id="d1-t8"><input type="checkbox"><div class="content"><strong>Failure recovery:</strong> what to do when a subagent times out, returns garbage, or contradicts another subagent's output.</div></div>
 
     <h3><span class="step-num">2</span> Resources for this domain</h3>
-    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Building with the Claude Agent SDK"</span>
-      <div class="res-desc">Core course covering agent loops, tool calls, and the SDK API. ~2 hours. Free, requires email signup.</div>
-    </a>
-    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Subagents"</span>
-      <div class="res-desc">Specifically on subagent design, parallel/sequential dispatch, and orchestration patterns. ~1 hour.</div>
-    </a>
     <a class="res" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">"Building effective agents" — Anthropic engineering blog</span>
-      <div class="res-desc">THE canonical reference for the 5 agentic patterns. Read it 3 times. Single most important reading for this domain.</div>
+      <div class="res-desc">THE canonical reference for the 5 agentic patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer). Read it 3 times. Single most important reading for this domain.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/agents-and-tools/overview" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Claude API docs: Agents & Tools overview</span>
-      <div class="res-desc">Reference material on tool-use loops, stop reasons, and message structure during agent execution.</div>
+    <a class="res" href="https://anthropic.skilljar.com/introduction-to-subagents" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Introduction to subagents"</span>
+      <div class="res-desc">Specifically on subagent design, delegation, context management, and parallel/sequential workflows. Free, email signup.</div>
+    </a>
+    <a class="res" href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Building with the Claude API"</span>
+      <div class="res-desc">Full-spectrum API course — message structure, tool-use loops, stop reasons, and the building blocks every agent uses.</div>
+    </a>
+    <a class="res" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude API docs: Tool use & agent loop</span>
+      <div class="res-desc">Reference for the agent loop: tool_use/tool_result blocks, stop_reason values, and how the loop is driven.</div>
     </a>
     <a class="res" href="https://github.com/anthropics/claude-agent-sdk-python" target="_blank">
       <span class="res-tag free">Free</span><span class="res-title">Claude Agent SDK (Python) — GitHub</span>
-      <div class="res-desc">Official SDK. The <code>examples/</code> folder is gold — read every example.</div>
+      <div class="res-desc">Official SDK. The <code>examples/</code> folder is gold — read every example. Used in Labs 1A and 1B.</div>
     </a>
 
     <h3><span class="step-num">3</span> Hands-on labs</h3>
@@ -341,21 +341,29 @@
     <div class="topic" data-id="d2-t7"><input type="checkbox"><div class="content"><strong>MCP server config</strong> inside <code>.claude/settings.json</code> — adding, scoping, and debugging servers.</div></div>
 
     <h3><span class="step-num">2</span> Resources for this domain</h3>
-    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
+    <a class="res" href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Claude Code in Action"</span>
-      <div class="res-desc">The primary prep course for this domain. Walks through CLAUDE.md, slash commands, hooks, and subagent invocation.</div>
+      <div class="res-desc">The primary prep course for this domain. Walks through integrating Claude Code into a real dev workflow.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/claude-code/overview" target="_blank">
+    <a class="res" href="https://anthropic.skilljar.com/claude-code-101" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Claude Code 101"</span>
+      <div class="res-desc">Lighter intro to Claude Code. Skip if "Claude Code in Action" feels approachable; use it if you want a gentler ramp.</div>
+    </a>
+    <a class="res" href="https://code.claude.com/docs/en/overview" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">Claude Code documentation — full reference</span>
-      <div class="res-desc">Read these sections in order: CLAUDE.md → settings → slash commands → hooks → subagents → MCP integration.</div>
+      <div class="res-desc">Authoritative reference. Read these in order: overview → memory (CLAUDE.md) → settings → slash commands → hooks → sub-agents → MCP.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/claude-code/sub-agents" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Claude Code: Subagents reference</span>
-      <div class="res-desc">Subagent definition file format, frontmatter fields, when Claude Code routes to a subagent automatically.</div>
+    <a class="res" href="https://code.claude.com/docs/en/memory" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude Code: Memory & CLAUDE.md</span>
+      <div class="res-desc">What goes in CLAUDE.md, how it's injected at session start, and the "auto memory" feature.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/claude-code/hooks" target="_blank">
+    <a class="res" href="https://code.claude.com/docs/en/sub-agents" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Claude Code: Sub-agents reference</span>
+      <div class="res-desc">Sub-agent definition file format, frontmatter fields, when Claude Code routes to a sub-agent automatically.</div>
+    </a>
+    <a class="res" href="https://code.claude.com/docs/en/hooks" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">Claude Code: Hooks reference</span>
-      <div class="res-desc">All 4 hook types, return-code semantics, and concrete examples (blocking writes outside project, logging, etc.).</div>
+      <div class="res-desc">PreToolUse / PostToolUse / UserPromptSubmit / Notification semantics. Concrete blocking examples.</div>
     </a>
 
     <h3><span class="step-num">3</span> Hands-on labs</h3>
@@ -416,21 +424,25 @@
     <div class="topic" data-id="d3-t8"><input type="checkbox"><div class="content"><strong>Common failure modes:</strong> over-specification, contradicting instructions, instructions that the model can't follow.</div></div>
 
     <h3><span class="step-num">2</span> Resources for this domain</h3>
-    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Prompt Engineering" course</span>
-      <div class="res-desc">Primary prep course. Covers every technique on the exam.</div>
-    </a>
-    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Prompt engineering guide — docs.claude.com</span>
-      <div class="res-desc">Cover-to-cover read. Especially: "Use XML tags," "Chain prompts," "Prefill response," and "Be clear and direct."</div>
-    </a>
     <a class="res" href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">Prompt Engineering Interactive Tutorial — GitHub</span>
-      <div class="res-desc">Free Jupyter notebooks. The single fastest way to internalize Domain 3. Run every cell.</div>
+      <div class="res-desc">9 chapters of Jupyter notebooks: basic structure → being clear → roles → separating data → output formatting → chain-of-thought → examples → hallucinations → complex prompts. The single fastest way to internalize Domain 3. Run every cell.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/structured-outputs" target="_blank">
+    <a class="res" href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Prompting best practices — Claude API docs</span>
+      <div class="res-desc">The living reference: clarity, XML tags, role assignment, chain-of-thought, prompt chaining, prefilling. Read cover-to-cover.</div>
+    </a>
+    <a class="res" href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Building with the Claude API"</span>
+      <div class="res-desc">There is no standalone "Prompt Engineering" course on Skilljar — the prompting modules live inside this broader API course. Free, email signup.</div>
+    </a>
+    <a class="res" href="https://platform.claude.com/docs/en/build-with-claude/structured-outputs" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">Structured outputs reference</span>
-      <div class="res-desc">JSON mode, tool-use as structured output, prefilling strategies.</div>
+      <div class="res-desc">JSON mode, tool-use as structured output, prefilling strategies, and the new strict mode.</div>
+    </a>
+    <a class="res" href="https://docs.google.com/spreadsheets/d/19jzLgRruG9kjUQNKtCg1ZjdD6l6weA6qRXG5zLIAhC8" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Google Sheets prompting tutorial</span>
+      <div class="res-desc">Lighter-weight, browser-friendly version of the interactive tutorial. Useful if you don't want to spin up Jupyter.</div>
     </a>
 
     <h3><span class="step-num">3</span> Hands-on labs</h3>
@@ -484,15 +496,19 @@
     <h3><span class="step-num">2</span> Resources for this domain</h3>
     <a class="res" href="https://anthropic.skilljar.com/introduction-to-model-context-protocol" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Introduction to Model Context Protocol"</span>
-      <div class="res-desc">Primary MCP course. Covers all 3 primitives and the server/client architecture.</div>
+      <div class="res-desc">Primary MCP course. Build MCP servers and clients from scratch in Python. All 3 primitives covered.</div>
     </a>
-    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Agent Skills"</span>
-      <div class="res-desc">SKILL.md format, trigger conditions, packaging, and distribution.</div>
+    <a class="res" href="https://anthropic.skilljar.com/model-context-protocol-advanced-topics" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Model Context Protocol: Advanced Topics"</span>
+      <div class="res-desc">Sampling, notifications, filesystem access, transports — exactly the production-MCP topics the exam tests.</div>
     </a>
-    <a class="res" href="https://modelcontextprotocol.io" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">modelcontextprotocol.io — full spec & tutorials</span>
-      <div class="res-desc">Start with "Build an MCP Server" tutorial, then read the Concepts pages on tools/resources/prompts.</div>
+    <a class="res" href="https://anthropic.skilljar.com/introduction-to-agent-skills" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Introduction to agent skills"</span>
+      <div class="res-desc">Build, configure, and share Skills in Claude Code. SKILL.md structure, trigger conditions, distribution.</div>
+    </a>
+    <a class="res" href="https://modelcontextprotocol.io/docs/develop/build-server" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">modelcontextprotocol.io — "Build an MCP Server" tutorial</span>
+      <div class="res-desc">The canonical tutorial. Walk through it before Lab 4A. Then read the Concepts pages on tools/resources/prompts.</div>
     </a>
     <a class="res" href="https://github.com/modelcontextprotocol/servers" target="_blank">
       <span class="res-tag free">Free</span><span class="res-title">Reference MCP servers — GitHub</span>
@@ -500,11 +516,11 @@
     </a>
     <a class="res" href="https://www.deeplearning.ai/courses/mcp-build-rich-context-ai-apps-with-anthropic" target="_blank">
       <span class="res-tag video">Video</span><span class="res-title">DeepLearning.AI: "MCP — Build Rich-Context AI Apps with Anthropic"</span>
-      <div class="res-desc">Andrew Ng's short course. Excellent complement to the Anthropic Academy MCP module. Free with email.</div>
+      <div class="res-desc">Short course (Andrew Ng + Anthropic). Excellent video complement to the Skilljar modules. Free with email.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/tool-use" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Tool use reference — docs.claude.com</span>
-      <div class="res-desc">JSON Schema details, tool_use/tool_result block semantics, error patterns.</div>
+    <a class="res" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Tool use reference — Claude API docs</span>
+      <div class="res-desc">JSON Schema details, tool_use/tool_result block semantics, client vs. server tools, strict mode, error patterns.</div>
     </a>
 
     <h3><span class="step-num">3</span> Hands-on labs</h3>
@@ -552,26 +568,34 @@
     <div class="topic" data-id="d5-t2"><input type="checkbox"><div class="content"><strong>Token estimation</strong> and budget management across multi-turn conversations.</div></div>
     <div class="topic" data-id="d5-t3"><input type="checkbox"><div class="content"><strong>Conversation compaction</strong> and summarization — when, where, what to keep.</div></div>
     <div class="topic" data-id="d5-t4"><input type="checkbox"><div class="content"><strong>Multi-turn quality:</strong> how quality degrades over long sessions and how to preserve it.</div></div>
-    <div class="topic" data-id="d5-t5"><input type="checkbox"><div class="content"><strong>The CALM framework</strong> for context-aware LLM management.</div></div>
+    <div class="topic" data-id="d5-t5"><input type="checkbox"><div class="content"><strong>Context-aware design</strong> — keeping prompts focused, removing irrelevant context, and structuring multi-turn state.</div></div>
     <div class="topic" data-id="d5-t6"><input type="checkbox"><div class="content"><strong>Retries with exponential backoff,</strong> timeouts, and idempotent tool design.</div></div>
     <div class="topic" data-id="d5-t7"><input type="checkbox"><div class="content"><strong>Validating tool outputs</strong> before passing them back to the model.</div></div>
 
     <h3><span class="step-num">2</span> Resources for this domain</h3>
-    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/prompt-caching" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Prompt caching reference — docs.claude.com</span>
-      <div class="res-desc">Cache breakpoints, the 1024-token minimum, TTLs, pricing implications. Most-tested topic in this domain.</div>
+    <a class="res" href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Prompt caching reference — Claude API docs</span>
+      <div class="res-desc">Cache breakpoints, minimum cacheable size, TTLs, pricing implications. Most-tested topic in this domain.</div>
     </a>
-    <a class="res" href="https://docs.claude.com/en/docs/build-with-claude/context-windows" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Long-context guidance — docs.claude.com</span>
-      <div class="res-desc">Best practices for 100K+ token prompts, where to put long documents, retrieval patterns.</div>
+    <a class="res" href="https://platform.claude.com/docs/en/build-with-claude/context-windows" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Context windows reference — Claude API docs</span>
+      <div class="res-desc">Best practices for long-context prompts, where to place documents, retrieval patterns.</div>
+    </a>
+    <a class="res" href="https://platform.claude.com/docs/en/build-with-claude/compaction" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Compaction reference — Claude API docs</span>
+      <div class="res-desc">Official guidance on conversation compaction and summarization patterns. Directly maps to a domain topic.</div>
+    </a>
+    <a class="res" href="https://platform.claude.com/docs/en/build-with-claude/token-counting" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Token counting — Claude API docs</span>
+      <div class="res-desc">How to estimate and budget tokens before sending. Useful for the "token estimation" topic.</div>
     </a>
     <a class="res" href="https://www.anthropic.com/news/contextual-retrieval" target="_blank">
       <span class="res-tag official">Official</span><span class="res-title">"Introducing Contextual Retrieval" — Anthropic blog</span>
       <div class="res-desc">How to retrieve and inject context cleanly. Shows caching + retrieval working together.</div>
     </a>
-    <a class="res" href="https://anthropic.skilljar.com/" target="_blank">
-      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Production-Ready Claude" (or similar advanced API module)</span>
-      <div class="res-desc">Covers caching, batching, error handling, and the reliability primitives the exam tests on.</div>
+    <a class="res" href="https://anthropic.skilljar.com/claude-with-the-anthropic-api" target="_blank">
+      <span class="res-tag official">Official</span><span class="res-title">Anthropic Academy: "Building with the Claude API"</span>
+      <div class="res-desc">The reliability/production sections of this course (caching, batching, error handling) cover the practical side of this domain.</div>
     </a>
 
     <h3><span class="step-num">3</span> Hands-on labs</h3>
@@ -609,7 +633,7 @@
     <div class="week">
       <h3>Week 1 — Foundations & Domain 3<span class="week-meta">Days 1–7 • Prompt Engineering (20%) + warm-up</span></h3>
       <div class="day" data-id="d1day"><input type="checkbox"><div class="content"><div class="title">Day 1 — Set up your environment <span class="pill setup">SETUP</span></div><div class="desc">Create Anthropic API key. Install Claude SDK (<code>pip install anthropic</code>) and Claude Code (<code>npm install -g @anthropic-ai/claude-code</code>). Enroll on anthropic.skilljar.com.</div></div></div>
-      <div class="day" data-id="d2day"><input type="checkbox"><div class="content"><div class="title">Day 2 — Anthropic Academy: Intro to Claude + API Fundamentals <span class="pill setup">SETUP</span></div><div class="desc">Foundational courses. Take notes on message structure, roles, stop reasons.</div></div></div>
+      <div class="day" data-id="d2day"><input type="checkbox"><div class="content"><div class="title">Day 2 — Anthropic Academy: "Claude 101" + start "Building with the Claude API" <span class="pill setup">SETUP</span></div><div class="desc">Two foundational courses on Skilljar. Take notes on message structure, roles, stop reasons.</div></div></div>
       <div class="day" data-id="d3day"><input type="checkbox"><div class="content"><div class="title">Day 3 — Domain 3 topics 1–4 <span class="pill d3">DOMAIN 3</span></div><div class="desc">Open Domain 3 tab. Work through XML tagging, roles, chain-of-thought, prompt chaining. Read the official prompt engineering guide.</div></div></div>
       <div class="day" data-id="d4day"><input type="checkbox"><div class="content"><div class="title">Day 4 — Domain 3 topics 5–8 <span class="pill d3">DOMAIN 3</span></div><div class="desc">Few-shot, prefilling, JSON output, failure modes. Run the Prompt Engineering Interactive Tutorial notebooks.</div></div></div>
       <div class="day" data-id="d5day"><input type="checkbox"><div class="content"><div class="title">Day 5 — Lab 3A part 1 <span class="pill d3">DOMAIN 3</span></div><div class="desc">Build the classification prompt + 20-example test set.</div></div></div>
@@ -619,10 +643,10 @@
 
     <div class="week">
       <h3>Week 2 — Domain 1 (the big one)<span class="week-meta">Days 8–14 • Agentic Architecture (27%) — highest-weight domain</span></h3>
-      <div class="day" data-id="d8day"><input type="checkbox"><div class="content"><div class="title">Day 8 — Domain 1 topics 1–4 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Agent loop, the 5 patterns, workflows vs. agents, subagent orchestration. Take the Anthropic Academy agent course.</div></div></div>
+      <div class="day" data-id="d8day"><input type="checkbox"><div class="content"><div class="title">Day 8 — Domain 1 topics 1–4 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Agent loop, the 5 patterns, workflows vs. agents, subagent orchestration. Finish "Building with the Claude API" on Skilljar.</div></div></div>
       <div class="day" data-id="d9day"><input type="checkbox"><div class="content"><div class="title">Day 9 — "Building effective agents" deep read <span class="pill d1">DOMAIN 1</span></div><div class="desc">Read the engineering blog post twice. For each of the 5 patterns, sketch which exam scenario it fits.</div></div></div>
       <div class="day" data-id="d10day"><input type="checkbox"><div class="content"><div class="title">Day 10 — Lab 1A <span class="pill d1">DOMAIN 1</span></div><div class="desc">Build the 3-tool research agent. Log every loop step.</div></div></div>
-      <div class="day" data-id="d11day"><input type="checkbox"><div class="content"><div class="title">Day 11 — Domain 1 topics 5–8 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Minimal-footprint, ambiguity, human-in-the-loop, failure recovery. Take the Subagents course.</div></div></div>
+      <div class="day" data-id="d11day"><input type="checkbox"><div class="content"><div class="title">Day 11 — Domain 1 topics 5–8 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Minimal-footprint, ambiguity, human-in-the-loop, failure recovery. Take "Introduction to subagents" on Skilljar.</div></div></div>
       <div class="day" data-id="d12day"><input type="checkbox"><div class="content"><div class="title">Day 12 — Lab 1B part 1 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Build the orchestrator-worker scaffold with 2–3 parallel subagents.</div></div></div>
       <div class="day" data-id="d13day"><input type="checkbox"><div class="content"><div class="title">Day 13 — Lab 1B part 2 <span class="pill d1">DOMAIN 1</span></div><div class="desc">Add timeouts, fallback paths, and a human-in-the-loop checkpoint. Break it deliberately to test recovery.</div></div></div>
       <div class="day" data-id="d14day"><input type="checkbox"><div class="content"><div class="title">Day 14 — Domain 1 self-check + practice quiz <span class="pill d1">DOMAIN 1</span></div><div class="desc">Answer all 4 self-check questions. Take a free agentic-architecture practice quiz; log every wrong answer.</div></div></div>
@@ -633,7 +657,7 @@
       <div class="day" data-id="d15day"><input type="checkbox"><div class="content"><div class="title">Day 15 — Domain 2 topics 1–4 + "Claude Code in Action" course <span class="pill d2">DOMAIN 2</span></div><div class="desc">CLAUDE.md, settings hierarchy, slash commands, hooks.</div></div></div>
       <div class="day" data-id="d16day"><input type="checkbox"><div class="content"><div class="title">Day 16 — Lab 2A + 2B <span class="pill d2">DOMAIN 2</span></div><div class="desc">Real Claude Code project with CLAUDE.md, settings, a slash command, and a hook.</div></div></div>
       <div class="day" data-id="d17day"><input type="checkbox"><div class="content"><div class="title">Day 17 — Domain 2 topics 5–7 + Lab 2C <span class="pill d2">DOMAIN 2</span></div><div class="desc">Permissions, subagent files, MCP server config. Build the test-writer subagent.</div></div></div>
-      <div class="day" data-id="d18day"><input type="checkbox"><div class="content"><div class="title">Day 18 — Domain 4 topics 1–4 + Intro to MCP course <span class="pill d4">DOMAIN 4</span></div><div class="desc">Primitives, JSON Schema, tool descriptions, transports.</div></div></div>
+      <div class="day" data-id="d18day"><input type="checkbox"><div class="content"><div class="title">Day 18 — Domain 4 topics 1–4 + "Introduction to MCP" course <span class="pill d4">DOMAIN 4</span></div><div class="desc">Primitives, JSON Schema, tool descriptions, transports.</div></div></div>
       <div class="day" data-id="d19day"><input type="checkbox"><div class="content"><div class="title">Day 19 — Lab 4A part 1 <span class="pill d4">DOMAIN 4</span></div><div class="desc">Build the MCP server with 2 tools + 1 resource + 1 prompt. Connect to Claude Desktop.</div></div></div>
       <div class="day" data-id="d20day"><input type="checkbox"><div class="content"><div class="title">Day 20 — Domain 4 topics 5–7 + Lab 4B <span class="pill d4">DOMAIN 4</span></div><div class="desc">Auth, tool-use loop semantics, Agent Skills. Write a SKILL.md and verify it triggers.</div></div></div>
       <div class="day" data-id="d21day"><input type="checkbox"><div class="content"><div class="title">Day 21 — Domain 2 + 4 self-checks + mixed quiz <span class="pill d2">D2</span> <span class="pill d4">D4</span></div><div class="desc">Both self-checks. Take a 30-question mixed mock covering Domains 1–4. Score honestly.</div></div></div>
@@ -643,7 +667,7 @@
       <h3>Week 4 — Domain 5 + Mock Exams<span class="week-meta">Days 22–30 • Context/Reliability (15%) + full-length practice</span></h3>
       <div class="day" data-id="d22day"><input type="checkbox"><div class="content"><div class="title">Day 22 — Domain 5 topics 1–4 + caching docs <span class="pill d5">DOMAIN 5</span></div><div class="desc">Prompt caching, token estimation, compaction, multi-turn quality.</div></div></div>
       <div class="day" data-id="d23day"><input type="checkbox"><div class="content"><div class="title">Day 23 — Lab 5A <span class="pill d5">DOMAIN 5</span></div><div class="desc">Add prompt caching to a previous lab. Measure the latency/cost delta.</div></div></div>
-      <div class="day" data-id="d24day"><input type="checkbox"><div class="content"><div class="title">Day 24 — Domain 5 topics 5–7 + Lab 5B <span class="pill d5">DOMAIN 5</span></div><div class="desc">CALM, retries, validation. Wrap Lab 1A in a reliability layer.</div></div></div>
+      <div class="day" data-id="d24day"><input type="checkbox"><div class="content"><div class="title">Day 24 — Domain 5 topics 5–7 + Lab 5B <span class="pill d5">DOMAIN 5</span></div><div class="desc">Context-aware design, retries, validation. Wrap Lab 1A in a reliability layer.</div></div></div>
       <div class="day" data-id="d25day"><input type="checkbox"><div class="content"><div class="title">Day 25 — Full-length Mock Exam #1 <span class="pill exam">MOCK</span></div><div class="desc">60 questions, 120 minutes, under exam conditions. No reviewing answers yet.</div></div></div>
       <div class="day" data-id="d26day"><input type="checkbox"><div class="content"><div class="title">Day 26 — Mock #1 deep review <span class="pill exam">REVIEW</span></div><div class="desc">For every missed (or guessed-right) answer: write question, your answer, right answer, one-line reason.</div></div></div>
       <div class="day" data-id="d27day"><input type="checkbox"><div class="content"><div class="title">Day 27 — Weak-spot drilling <span class="pill exam">REVIEW</span></div><div class="desc">Whichever domain scored worst, spend today on. Re-read docs, rerun the relevant lab.</div></div></div>
